@@ -1,0 +1,238 @@
+﻿1)
+
+
+
+
+
+
+2) Əgər biz bir funksiya(məsələn a funksiyası) yaradırıqsa və onun içində funksiya(məsələn b funksiyası) yaradırıqsa, artıq avtomatik b funksiyası a-nın daxilində olan dəyişənləri və s. özünə mənimsədir və istənilən vaxt ondan istifadə edə bilir. Daxildəki b funksiyası bir növ class məntiqində private-yə bənzəyir. Əgər biz closure'dən istifadə ediriksə, funksiyadan kənarda onu bir dəyişənə mənimsətməliyik.
+
+Məsələn:
+function a() {
+    var text = "Nicat";
+
+    function b() {
+        return text
+    }
+
+    return b;
+}
+
+myfunc = a();
+console.log(myfunc())
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3) Əgər obyektin tipini === ilə yoxlamaq lazımdırsa, .toString() metodundan istifadə etmək lazımdır. Məsələn 2 obyektin tipini yoxlamaq üçün:
+
+
+var obj = {
+    name: "object"
+};
+
+var obj2 = {
+    name: "object"
+};
+
+
+if (obj.toString() == obj2.toString()) {
+    console.log("it' object")
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4) Əgər JS-də lokal dəyişən elan etmək istəyiriksə, dəyişənin əvvəlində var sözündən istifadə olunur.  Qlobal dəyişənin elanında var sözündən istifadə olunmur. Mən qlobal dəyişən elan etdikdə həmin dəyişəndən istənilən funksiyada və s. istifadə edə bilərəm. Məsələn, 
+
+a = 5;
+
+function example() {
+     a = 10;
+}
+
+console.log(a);
+
+example();
+
+console.log(a);
+
+bu nümunədə ilk əvvəl a=5 elan olunub daha sonra funksiyada isə funksiyada a=10 elan olunub ilk console.log funksiya çağırılmamışdan əvvəl yazıldığından heç bir dəyişiklik olmur. Funksiya çağırıldıqdan sora dəyişən öz qiymətini dəyişir və 10 olur. Ancaq funksiyanın içərisində var a=10 etsə idik artıq bu a dəyişəni funksiyanın lokal dəyişəni olacaqdı və ancaq ona funksiya daxilində müraciət etmək mümkün olacaqdı və əvvəlki nümunədə funkisyanı çağırdıqdan sora belə a=5 cavabı qaytarılacaq.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5) == halı: Məsələn, a dəyişəni b dəyişəninə bərabərdirsə hər hansı bir əməliyyatın görülməsi lazımdır. Bu halda == dən istifadə etmək olar. Lakin JavaScript string tipində olan rəqəmləri number tipində olan rəqəmlərlə müqayisə etdikdə avtomatik olaraq stringi numberə çevirdiyindən bəzi hallarda tipin yoxlanılması halı da lazım gəlir. Bunun üçün === dən istifadə olunur.
+
+a = 5;
+c = "5";
+
+if (a == c) {
+    console.log("equal");
+}
+
+if (a === c) {
+    console.log("these types and values are equal")
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6)Boolean
+Null
+Undefined
+Number
+String
+Object
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7) JS tipləri avtomatik çevirdiyindən "1"+2+3 nəticə olaraq "123" verəcək(string tipində). Çünki "1"+2 avtomatik olaraq JS tərəfindən string kimi toplanır və 12 olur. "12"+3="123". Eyni qayda ilə
+1 + 2 + "3"="33" oalvc
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8)Explain the concept of unobtrusive Javascript?
+Unobtrusive JavaScript - Javascriptde web-proqramlashdirmaya yanashmadi. Bu yanashmanin esas konsepsiyalari ashagidakilardir: 
+1) Web sehifenin strukturunun (HTML), bezeyinin (CSS) ve interaktivliyinin (Javascript) ayri-ayri bolunmesi;
+2) Artiq hazir olan web appin istifadesini asanlashdirmaq ucun Javascriptden istifade;
+3) Graceful degradation texnikasinin olmasi: biz wep appimize Javascriptle mueyyen funskiyalari elave edirik, lakin bezi brauzerler hemin funksiyalari desteklemeye biler. Bu texnika onuncun istifade olunur ki, brauzer funksiyalari desteklemese de web appin ishlemesine engel toretmesin.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+9)Undefined ilə null-un fərqi ondan ibarətdir ki, məsələn var a yazsaq bu artıq undefined olacaq. Ancaq null ilə işləmək dəyişən=null sintaksisi yazmaq lazımdır. Digər fərq isə riyazi hesablamalarda null 0 kimi qəbul olunur. string tipli toplamada isə null elə null kimi undefined də undefined kimi götürülür.
+
+var a;
+var k = null;
+
+
+var z = a + 5;
+var h = k + 5;
+var j = a + "string";
+var i = k + "string";
+console.log(z)
+console.log(h)
+console.log(j)
+console.log(i)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+10) Şərt operatorları if,else, if else, switch-dir. Şərt operatoru kimi Ternar operatorundan da istifadə etmək olar. 
+
+a = 3;
+b = 4;
+
+if (a > b) {
+    console.log("a is greater than b");
+} else if (a < b) {
+    console.log("b is greater than a");
+} else {
+    console.log("a is equal to b");
+}
+
+
+switch (a) {
+    case 1:
+        console.log("Winter");
+        break;
+    case 2:
+        console.log("Spring");
+        break;
+    case 3:
+        console.log("Summer");
+        break;
+    case 4:
+        console.log("Autumun");
+        break;
+    default:
+        console.log("There are 4 season and your number is greater than 4 or not number")
+}
+
+var check = a > 4 ? (
+    console.log("There are 4 season and your number is greater than 4 or not number")
+) : (
+    console.log("There is a season for this number ")
+);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+11)NaN- Not a Number deməkdir. Qlobal dəyişənlərin property'sidir. Məsələn string tipində rəqəmlə başlamayan hər hansı yazını parseInt və ya parse Float metodları ilə number tipinə çevirdikdə NaN verəcək. Məsələn:
+
+var a = "it's string";
+var h = "24k"
+console.log(parseInt(a));
+console.log(parseInt(h));
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12) This açarsözü global obyektə əsaslanır və olduğu yerə istinadı bildirir. Məsələn funksiya daxilində həmin funksiyaya, obyekt daxilində funksiyaya, məsələn, onun elementinə müraciət etmək istəyirəmsə this açar sözündən istifadə etmək olar. Bu açar sözdən class məntiqində geniş istifadə olunur. Əgər bu açar söz heç bir funksiya obyekt daxilində deyilsə, onu console.log etsək ümumi səhifənin xüsusiyyətlərini(window propertilərini) göstərəcək.
+
+
+var obj = {
+    name: "Adil",
+    func: function() {
+
+        return this.name
+    }
+}
+
+console.log(obj.func())
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+13) undefined data tipidir və hər hansı bir dəyişən elan olubsa lakin ona null da daxil olmaqla dəyər verilməyibsə, yəni məsələn, var a şəklindədirsə, o undefineddi. Lakin 14cü sualda 2ci məsələyə baxsaq z sonrada təyin olunub və y artıq onu oxuya bilmir ona görə not defined error verir. Yəni not defined error fomrasıdır, undefined isə data tipi
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+14) Hoisting Javascriptin default xüsusiyyəti olub, var ilə təyin olunan dəyişənləri səhifənin əvvəlinə gətirir. Məsələn, 
+x = 5;
+
+var x;
+console.log(x);
+
+
+
+Məsələn, 
+
+var x = 5;
+
+var y = x + z;
+
+z = 3;
+
+console.log(z);
+bu məsələdə z y=x+z ifadəsindən sonra təyin olduğu üçün bu proqram error verəcək. Ancaq z-i proqramın əvvəlində(minimum y=x+z -dən əvvəl) yazsaq proqram artıq error verməyəcək.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+15) Object oriendted Programming, functional paradigm
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+16)Functional programming yalnızca funksiyalarla yazılmış proqramlardır.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+17) Class varisliyi protoytype varislik üzərinə qurulmuşdur. Lakin bu o demək deyil ki, onlar tam eyni şeydirlər.
+
+Class inheritance-da classlar classdan törəyir və subclass relationlar yaradır. Onların istifadəsində new açar sözündən istifadə olunur.
+
+Prototype
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+18) 
+
+
